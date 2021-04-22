@@ -43,6 +43,7 @@ class NextButtonWidget extends StatelessWidget {
           backgroundColor: backgroundColor,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
           side: BorderSide(color: borderColor),
+          primary: Colors.grey,
         ),
         child: Text(
           label,
