@@ -21,8 +21,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    controller.getUser();
-    controller.getQuizzes();
+    controller.getData();
     controller.stateNotifier.addListener(() {
       setState(() {});
     });
@@ -85,6 +84,20 @@ class _HomePageState extends State<HomePage> {
             AppController appController = AppController.instance;
             appController.toggleThemeMode();
           },
+        ),
+      );
+    } else if (controller.state == HomeState.error) {
+      return Scaffold(
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset(AppImages.error),
+              Text('Erro ao carregar os dados!', style: AppTextStyles.heading),
+            ],
+          ),
         ),
       );
     } else {

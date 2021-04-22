@@ -16,15 +16,22 @@ class HomeController {
   UserModel? user;
   List<QuizModel>? quizzes;
 
-  void getUser() async {
+  void getData() async {
     state = HomeState.loading;
-    user = await repository.getUser();
-    state = HomeState.success;
+    try {
+      await getUser();
+      await getQuizzes();
+      state = HomeState.success;
+    } catch (error) {
+      state = HomeState.error;
+    }
   }
 
-  void getQuizzes() async {
-    state = HomeState.loading;
+  Future<void> getUser() async {
+    user = await repository.getUser();
+  }
+
+  Future<void> getQuizzes() async {
     quizzes = await repository.getQuizzes();
-    state = HomeState.success;
   }
 }
