@@ -1,3 +1,4 @@
+import 'package:DevQuiz/app_controller.dart';
 import 'package:DevQuiz/challenge/widgets/quiz/quiz_widget.dart';
 import 'package:DevQuiz/core/core.dart';
 import 'package:DevQuiz/home/home_controller.dart';
@@ -65,6 +66,17 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.blueGrey.shade800,
+          child: Icon(
+            Icons.nightlight_round,
+            color: Colors.yellow.shade200,
+          ),
+          onPressed: () {
+            AppController appController = AppController.instance;
+            appController.toggleThemeMode();
+          },
         ),
       );
     } else {
