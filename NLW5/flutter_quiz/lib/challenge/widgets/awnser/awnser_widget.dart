@@ -40,11 +40,16 @@ class AwnserWidget extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.all(16.0),
             decoration: BoxDecoration(
-              color: isSelected ? _selectedColorCardRight : AppColors.white,
+              color: isSelected ? _selectedColorCardRight : Theme.of(context).cardColor,
               borderRadius: BorderRadius.circular(10.0),
               border: Border.fromBorderSide(
                 BorderSide(
-                  color: isSelected ? _selectedBorderCardRight : AppColors.border,
+                  color: isSelected
+                      ? _selectedBorderCardRight
+                      : AppColors.getColorTheme(
+                          lightColor: AppColors.border,
+                          darkColor: AppColors.grey,
+                        ),
                 ),
               ),
             ),
@@ -58,7 +63,14 @@ class AwnserWidget extends StatelessWidget {
                   Expanded(
                     child: Text(
                       awnser.title,
-                      style: isSelected ? _selectedTextStyleRight : AppTextStyles.body,
+                      style: isSelected
+                          ? _selectedTextStyleRight
+                          : AppTextStyles.body.copyWith(
+                              color: AppColors.getColorTheme(
+                                lightColor: AppColors.grey,
+                                darkColor: AppColors.white,
+                              ),
+                            ),
                     ),
                   ),
                   Container(

@@ -25,11 +25,21 @@ class QuestionIndicatorWidget extends StatelessWidget {
             children: [
               Text(
                 'Quentão $currentPage',
-                style: AppTextStyles.body,
+                style: AppTextStyles.body.copyWith(
+                  color: AppColors.getColorTheme(
+                    lightColor: AppColors.grey,
+                    darkColor: AppColors.white,
+                  ),
+                ),
               ),
               Text(
                 'de $length',
-                style: AppTextStyles.body,
+                style: AppTextStyles.body.copyWith(
+                  color: AppColors.getColorTheme(
+                    lightColor: AppColors.grey,
+                    darkColor: AppColors.white,
+                  ),
+                ),
               ),
             ],
           ),

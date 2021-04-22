@@ -24,8 +24,8 @@ class QuizCardWidget extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(16.0),
         decoration: BoxDecoration(
-          border: Border.fromBorderSide(BorderSide(color: AppColors.border)),
-          color: AppColors.white,
+          border: Border.fromBorderSide(BorderSide(color: AppColors.getColorTheme(lightColor: AppColors.border, darkColor: AppColors.grey))),
+          color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(10.0),
         ),
         child: Column(
@@ -39,7 +39,9 @@ class QuizCardWidget extends StatelessWidget {
             SizedBox(height: 24),
             Text(
               title,
-              style: AppTextStyles.heading15,
+              style: AppTextStyles.heading15.copyWith(
+                color: AppColors.getColorTheme(lightColor: AppColors.black, darkColor: AppColors.white),
+              ),
             ),
             SizedBox(height: 24),
             Row(
@@ -48,7 +50,9 @@ class QuizCardWidget extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
                   child: Text(
                     completed,
-                    style: AppTextStyles.body11,
+                    style: AppTextStyles.body11.copyWith(
+                      color: AppColors.getColorTheme(lightColor: AppColors.grey, darkColor: AppColors.white),
+                    ),
                   ),
                 ),
                 Expanded(

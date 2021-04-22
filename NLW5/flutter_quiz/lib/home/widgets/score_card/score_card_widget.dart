@@ -1,3 +1,4 @@
+import 'package:DevQuiz/app_controller.dart';
 import 'package:DevQuiz/core/core.dart';
 import 'package:DevQuiz/home/widgets/chart/chart_widget.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ class ScoreCardWidget extends StatelessWidget {
       child: Container(
         height: 136.0,
         decoration: BoxDecoration(
-          color: AppColors.white,
+          color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(15.0),
         ),
         child: Padding(
@@ -34,8 +35,18 @@ class ScoreCardWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Vamos começar', style: AppTextStyles.heading),
-                      Text('Complete os desafios e avanec em conhecimento.', style: AppTextStyles.body),
+                      Text(
+                        'Vamos começar',
+                        style: AppTextStyles.heading.copyWith(
+                          color: AppColors.getColorTheme(lightColor: AppColors.black, darkColor: AppColors.white),
+                        ),
+                      ),
+                      Text(
+                        'Complete os desafios e avance em conhecimento.',
+                        style: AppTextStyles.body.copyWith(
+                          color: AppColors.getColorTheme(lightColor: AppColors.grey, darkColor: AppColors.white),
+                        ),
+                      ),
                     ],
                   ),
                 ),

@@ -30,7 +30,12 @@ class _QuizWidgetState extends State<QuizWidget> {
         SizedBox(height: 64.0),
         Text(
           widget.question.title,
-          style: AppTextStyles.heading,
+          style: AppTextStyles.heading.copyWith(
+            color: AppColors.getColorTheme(
+              lightColor: AppColors.black,
+              darkColor: AppColors.white,
+            ),
+          ),
         ),
         SizedBox(height: 24.0),
         for (int i = 0; i < widget.question.awnsers.length; i++)

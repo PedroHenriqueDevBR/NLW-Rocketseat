@@ -86,6 +86,7 @@ class _ChallengePageState extends State<ChallengePage> {
                     child: NextButtonWidget.white(
                   label: 'Pular',
                   onTap: nextPage,
+                  context: this.context,
                 )),
               if (value == widget.questions.length)
                 Expanded(

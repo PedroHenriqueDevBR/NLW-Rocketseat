@@ -4,11 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:DevQuiz/core/core.dart';
 
 class NextButtonWidget extends StatelessWidget {
-  final String label;
-  final Color backgroundColor;
-  final Color fontColor;
-  final Color borderColor;
-  final VoidCallback onTap;
+  late String label;
+  late Color backgroundColor;
+  late Color fontColor;
+  late Color borderColor;
+  late VoidCallback onTap;
 
   NextButtonWidget({
     Key? key,
@@ -26,12 +26,13 @@ class NextButtonWidget extends StatelessWidget {
         this.borderColor = AppColors.darkGreen,
         this.onTap = onTap;
 
-  NextButtonWidget.white({required String label, required VoidCallback onTap})
-      : this.label = label,
-        this.fontColor = AppColors.lightGrey,
-        this.backgroundColor = AppColors.white,
-        this.borderColor = AppColors.border,
-        this.onTap = onTap;
+  NextButtonWidget.white({required String label, required VoidCallback onTap, BuildContext? context}) {
+    this.label = label;
+    this.fontColor = AppColors.getColorTheme(lightColor: AppColors.lightGrey, darkColor: AppColors.white);
+    this.backgroundColor = context != null ? Theme.of(context).cardColor : AppColors.white;
+    this.borderColor = AppColors.getColorTheme(lightColor: AppColors.border, darkColor: AppColors.grey);
+    this.onTap = onTap;
+  }
 
   @override
   Widget build(BuildContext context) {
