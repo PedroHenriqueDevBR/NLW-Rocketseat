@@ -14,7 +14,7 @@ class _ChartWidgetState extends State<ChartWidget> with SingleTickerProviderStat
   late Animation<double> _animation;
 
   void _initAnimation() {
-    _controller = AnimationController(vsync: this, duration: Duration(seconds: 3));
+    _controller = AnimationController(vsync: this, duration: Duration(seconds: 2));
     _animation = Tween<double>(begin: 0.0, end: widget.percent).animate(_controller);
     _controller.forward();
   }

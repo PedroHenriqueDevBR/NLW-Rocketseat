@@ -42,7 +42,7 @@ class ResultPage extends StatelessWidget {
                 SizedBox(height: 16),
                 Text.rich(
                   TextSpan(
-                    text: 'Você concluiu ',
+                    text: 'Você concluiu',
                     style: AppTextStyles.body.copyWith(
                       color: AppColors.getColorTheme(
                         lightColor: AppColors.grey,
@@ -71,6 +71,9 @@ class ResultPage extends StatelessWidget {
                     ],
                   ),
                   textAlign: TextAlign.center,
+                  style: TextStyle(
+                    height: 1.8,
+                  ),
                 ),
               ],
             ),
