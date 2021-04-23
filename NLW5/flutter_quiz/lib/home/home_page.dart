@@ -63,7 +63,11 @@ class _HomePageState extends State<HomePage> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              CupertinoPageRoute(builder: (context) => ChallengePage(questions: e.questions)),
+                              CupertinoPageRoute(
+                                  builder: (context) => ChallengePage(
+                                        questions: e.questions,
+                                        title: e.title,
+                                      ),),
                             );
                           },
                         ),

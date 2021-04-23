@@ -1,4 +1,5 @@
 import 'package:DevQuiz/challenge/challenge_controller.dart';
+import 'package:DevQuiz/result/result_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:DevQuiz/challenge/widgets/next_button/next_button_widget.dart';
@@ -8,10 +9,12 @@ import 'package:DevQuiz/shared/models/question_model.dart';
 
 class ChallengePage extends StatefulWidget {
   List<QuestionModel> questions;
+  String title;
 
   ChallengePage({
     Key? key,
     required this.questions,
+    required this.title,
   }) : super(key: key);
 
   @override
@@ -36,6 +39,13 @@ class _ChallengePageState extends State<ChallengePage> {
         duration: Duration(milliseconds: 500),
         curve: Curves.linear,
       );
+  }
+
+  void onSelected(bool value) {
+    if (value == true) {
+      controller.rightAnswersAcount++;
+    }
+    nextPage();
   }
 
   @override
@@ -68,7 +78,7 @@ class _ChallengePageState extends State<ChallengePage> {
           controller: pageController,
           children: widget.questions
               .map((e) => QuizWidget(
-                    onChange: nextPage,
+                    onSelected: onSelected,
                     question: e,
                   ))
               .toList(),
@@ -90,12 +100,21 @@ class _ChallengePageState extends State<ChallengePage> {
                 )),
               if (value == widget.questions.length)
                 Expanded(
-                    child: NextButtonWidget.green(
-                  label: 'Confirmar',
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                )),
+                  child: NextButtonWidget.green(
+                    label: 'Confirmar',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ResultPage(
+                                  title: widget.title,
+                                  length: widget.questions.length,
+                                  result: controller.rightAnswersAcount,
+                                )),
+                      );
+                    },
+                  ),
+                ),
             ],
           ),
         ),
