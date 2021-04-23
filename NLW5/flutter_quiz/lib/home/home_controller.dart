@@ -14,7 +14,8 @@ class HomeController {
   HomeRepository repository = HomeRepository();
 
   UserModel? user;
-  List<QuizModel>? quizzes;
+  ValueNotifier<List<QuizModel>> quizzes = ValueNotifier<List<QuizModel>>([]);
+  ValueNotifier<String> selectedLevel = ValueNotifier<String>('');
 
   void getData() async {
     state = HomeState.loading;
@@ -31,7 +32,28 @@ class HomeController {
     user = await repository.getUser();
   }
 
-  Future<void> getQuizzes() async {
-    quizzes = await repository.getQuizzes();
+  Future<void> getQuizzes({String? search}) async {
+    List<QuizModel> out = [];
+    if (search != null) {
+      List<QuizModel> response = await repository.getQuizzes();
+      for (QuizModel quizModel in response) {
+        if (quizModel.level == search.levelParse) {
+          out.add(quizModel);
+        }
+      }
+    } else {
+      out = await repository.getQuizzes();
+    }
+    quizzes.value = out;
+  }
+
+  void selectLevel({required String level}) {
+    if (selectedLevel.value == level) {
+      selectedLevel.value = '';
+      getQuizzes();
+    } else {
+      selectedLevel.value = level;
+      getQuizzes(search: level);
+    }
   }
 }

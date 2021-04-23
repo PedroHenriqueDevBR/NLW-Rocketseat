@@ -1,7 +1,7 @@
 [
     {
         "title": "NLW 5 Flutter",
-        "image": "laptop",
+        "image": "laptop.png",
         "questionAnswered": 1,
         "level": "facil",
         "questions": [
@@ -44,10 +44,10 @@
         ]
     },
     {
-        "title": "Gerência de estado",
-        "image": "blocks",
+        "title": "Testes",
+        "image": "blocks.png",
         "questionAnswered": 1,
-        "level": "facil",
+        "level": "medio",
         "questions": [
             {
                 "title": "Está curtindo o Flutter",
@@ -89,9 +89,9 @@
     },
     {
         "title": "Arquitetura",
-        "image": "hierarchy",
+        "image": "hierarchy.png",
         "questionAnswered": 1,
-        "level": "facil",
+        "level": "dificil",
         "questions": [
             {
                 "title": "Está curtindo o Flutter",
@@ -133,9 +133,9 @@
     },
     {
         "title": "Animação",
-        "image": "data",
+        "image": "data.png",
         "questionAnswered": 1,
-        "level": "facil",
+        "level": "perito",
         "questions": [
             {
                 "title": "Está curtindo o Flutter",

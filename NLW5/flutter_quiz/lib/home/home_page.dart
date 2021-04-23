@@ -25,6 +25,10 @@ class _HomePageState extends State<HomePage> {
     controller.stateNotifier.addListener(() {
       setState(() {});
     });
+    controller.selectedLevel.addListener(() {
+      controller.getQuizzes(search: controller.selectedLevel.value);
+      setState(() {});
+    });
   }
 
   @override
@@ -42,10 +46,34 @@ class _HomePageState extends State<HomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  LevelButtonWidget(label: 'Fácil'),
-                  LevelButtonWidget(label: 'Médio'),
-                  LevelButtonWidget(label: 'Difícil'),
-                  LevelButtonWidget(label: 'Perito'),
+                  LevelButtonWidget(
+                    label: 'Fácil',
+                    selected: controller.selectedLevel.value == 'facil',
+                    onTap: () {
+                      controller.selectLevel(level: 'facil');
+                    },
+                  ),
+                  LevelButtonWidget(
+                    label: 'Médio',
+                    selected: controller.selectedLevel.value == 'medio',
+                    onTap: () {
+                      controller.selectLevel(level: 'medio');
+                    },
+                  ),
+                  LevelButtonWidget(
+                    label: 'Difícil',
+                    selected: controller.selectedLevel.value == 'dificil',
+                    onTap: () {
+                      controller.selectLevel(level: 'dificil');
+                    },
+                  ),
+                  LevelButtonWidget(
+                    label: 'Perito',
+                    selected: controller.selectedLevel.value == 'perito',
+                    onTap: () {
+                      controller.selectLevel(level: 'perito');
+                    },
+                  ),
                 ],
               ),
               SizedBox(height: 24.0),
@@ -54,20 +82,19 @@ class _HomePageState extends State<HomePage> {
                   crossAxisCount: 2,
                   crossAxisSpacing: 16.0,
                   mainAxisSpacing: 16.0,
-                  children: controller.quizzes!
+                  children: controller.quizzes.value
                       .map(
                         (e) => QuizCardWidget(
                           title: e.title,
+                          imageName: e.image,
                           completed: '${e.questionAnswered}/${e.questions.length}',
                           percent: e.questionAnswered / e.questions.length,
                           onTap: () {
                             Navigator.push(
                               context,
                               CupertinoPageRoute(
-                                  builder: (context) => ChallengePage(
-                                        questions: e.questions,
-                                        title: e.title,
-                                      ),),
+                                builder: (context) => ChallengePage(questions: e.questions, title: e.title),
+                              ),
                             );
                           },
                         ),

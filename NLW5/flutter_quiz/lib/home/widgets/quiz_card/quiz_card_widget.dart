@@ -5,6 +5,7 @@ import 'package:DevQuiz/shared/widgets/progress_indicator/progress_indicator_wid
 
 class QuizCardWidget extends StatelessWidget {
   final String title;
+  final String imageName;
   final String completed;
   final double percent;
   final VoidCallback onTap;
@@ -12,6 +13,7 @@ class QuizCardWidget extends StatelessWidget {
   const QuizCardWidget({
     Key? key,
     required this.title,
+    required this.imageName,
     required this.completed,
     required this.percent,
     required this.onTap,
@@ -34,7 +36,7 @@ class QuizCardWidget extends StatelessWidget {
             Container(
               height: 40,
               width: 40,
-              child: Image.asset(AppImages.blocks),
+              child: Image.asset('${AppImages.baseImages}$imageName'),
             ),
             SizedBox(height: 24),
             Text(
